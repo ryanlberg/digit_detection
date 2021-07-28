@@ -29,7 +29,6 @@ def translate(x, y):
     return posx, posy
 
 def convertTo(board):
-    print("doing it")
     out = []
     for x in range(28):
         currow = []
@@ -81,16 +80,13 @@ if __name__ == "__main__":
 
             if pygame.mouse.get_pressed()[0]:
                 
-               
                 x, y = mouse_pos[0], mouse_pos[1]
-                print(x, y)
                 posx, posy = translate(x, y)
                 if posx >= 0 and posx < 28 and posy >= 0 and posy < 28:
                     board[posx][posy].click()
 
                 elif x >= 240 and x <= (240+120) and y >= 675 and y <= (675+50):
                     b = convertTo(board)
-                    print(b)
                     Tk().wm_withdraw()
                     pred = getPred(model, b)
                     messagebox.showinfo("Guess", str(pred))
